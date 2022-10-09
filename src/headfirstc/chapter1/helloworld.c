@@ -15,6 +15,6 @@ int main(int argc, char const *argv[])
         return 1;
     }
 
-    printf("The number of cards in the deck(s) are %i \n", decks);
+    printf("The number of cards in the deck(s) are %i \n", (decks * 52));
     return 0;
 }
