@@ -13,19 +13,36 @@ int main(int argc, char const *argv[])
     puts("Enter the name of your card");
     scanf("%2s", card_name);
 
-    if (card_name[0] == 'K') {
+    switch (card_name[0])
+    {
+    case 'K':
         val = 10;
-    } else if (card_name[0] == 'Q') {
+        break;
+
+    case 'Q':
         val = 11;
-    } else if (card_name[0] == 'J'){
+        break;
+
+    case 'J':
         val = 10;
-    } else if (card_name[0] == 'A'){
+        break;
+
+    case 'A':
         val = 11;
-    } else {
+        break;
+
+    default:
         val = atoi(card_name);
     }
 
     printf("The value of the cards is %i \n", val);
+
+    if (val>=3&&val<=6){
+        puts("Count has gone up");
+    } else if(val==10 || val==11){
+        puts("Count has gone down");
+    }
+    
     
 
     return 0;
