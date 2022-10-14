@@ -30,6 +30,9 @@ int main(int argc, char const *argv[])
     char texts[][80] = {"My name is kosi", "I am a boy", "coding in c is fun"};
     check_if_string_exists_inside_another("Hel", "Hello world");
     puts(texts[0]);
-    find_message("kosi", texts);
+    char search_query[80];
+    puts("Enter a search query");
+    scanf("%s", search_query);
+    find_message(search_query, texts);
     return 0;
 }
