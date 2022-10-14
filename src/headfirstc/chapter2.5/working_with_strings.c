@@ -25,6 +25,16 @@ void find_message(char search_query[80], char list[][80]){
     return;
 }
 
+void print_string_in_reverse(char *s){
+    int str_len = strlen(s);
+    char *t = s + (str_len - 1);
+    while(t >= s){
+        printf("%c", *t);
+        t = t -1;
+    }
+    puts("");
+}
+
 int main(int argc, char const *argv[])
 {   
     char texts[][80] = {"My name is kosi", "I am a boy", "coding in c is fun"};
@@ -34,5 +44,7 @@ int main(int argc, char const *argv[])
     puts("Enter a search query");
     scanf("%s", search_query);
     find_message(search_query, texts);
+    print_string_in_reverse("Kosi");
+    char *names_for_dog[] = {"Bowser", "Bonza", "Snodgrass"};
     return 0;
 }
