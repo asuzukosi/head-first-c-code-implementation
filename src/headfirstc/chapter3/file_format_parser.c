@@ -16,14 +16,15 @@ int main(int argc, char const *argv[])
 
 
     puts("data = [");
-    while(scanf("%f,%f,%79[^\n]", &latitude, &longitude, info)){
+    int count = 0;
+    while(scanf("%f,%f,%79[^\n]", &latitude, &longitude, info) && count < 15){
         if(started){
             printf(",\n");
         }
         else{
             started = 1;
         }
-
+        count += 1;
         printf("{latitude: %f, longitude: %f, info: '%s'}", latitude, longitude, info);
     }
     puts("\n]");
