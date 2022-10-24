@@ -11,6 +11,15 @@ typedef enum {
 } unit_of_measure;
 
 
+// BITFIELD EXAMPLE IN C
+typedef struct {
+    unsigned int low_pass_vcf:1;
+    unsigned int filter_coupler:1;
+    unsigned int reverb:1;
+    unsigned int sequential:1;
+} synth;
+// END OF BITFIELD EXAMPLE
+
 typedef union {
     short count;
     float weight;
