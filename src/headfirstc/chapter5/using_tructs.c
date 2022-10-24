@@ -20,6 +20,16 @@ struct preferences {
     int exercise_hours;
 };
 
+
+typedef struct{
+    unsigned int first_visit:1;
+    unsigned int will_come_again:1;
+    unsigned int no_fingers_lost:4;
+    unsigned int lose_a_child:1;
+    unsigned int days_a_week_visited:3;
+
+} AquariumQuestionnaire;
+
 typedef struct fish
 {
     const char *name;
