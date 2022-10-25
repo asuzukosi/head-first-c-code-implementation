@@ -42,3 +42,7 @@ void display_linked_list(island *start){
     }
     
 }
+
+void insert_after(char *name, island *start){
+    
+}
