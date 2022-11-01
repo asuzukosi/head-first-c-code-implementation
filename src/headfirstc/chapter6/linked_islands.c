@@ -4,6 +4,7 @@ lists in c, by creating a linked island simulation
 */
 
 #include<stdio.h>
+#include<stdlib.h>
 #include<string.h>
 
 typedef struct island{
@@ -15,6 +16,15 @@ typedef struct island{
 
 void display_linked_list(island *start);
 void insert_after(char *name, island *start, island *new);
+
+island* dynamic_island_creation(char* name){
+    island* disland = malloc(sizeof(island));
+    disland->name = name;
+    disland->opens = "9:00AM";
+    disland->closes = "5:00PM";
+    disland->next = NULL;
+    return disland;
+}
 
 int main(int argv, char *argc[]){
     struct island amity = {"Amity", "09:00", "17:00", NULL};
@@ -34,6 +44,10 @@ int main(int argv, char *argc[]){
     struct island kosi = {"Kosi's Island","9:00", "17:00", NULL};
     insert_after("Shutter", &amity, &kosi);
     display_linked_list(&amity);
+
+    island *p = dynamic_island_creation("Tatooine");
+    printf("The name of the dynamic %s \n", p->name);
+    free(p);
 }
 
 void display_linked_list(island *start){
