@@ -19,35 +19,42 @@ void insert_after(char *name, island *start, island *new);
 
 island* dynamic_island_creation(char* name){
     island* disland = malloc(sizeof(island));
-    disland->name = name;
+    disland->name = strdup(name);
     disland->opens = "9:00AM";
     disland->closes = "5:00PM";
     disland->next = NULL;
     return disland;
 }
 
+void release_island_memory(island *start){
+    island *i = start;
+    island *next = NULL;
+
+    for(;i != NULL; i=next){
+        next = i->next;
+        free(i->name);
+        free(i);
+    }
+}
 int main(int argv, char *argc[]){
-    struct island amity = {"Amity", "09:00", "17:00", NULL};
-    struct island craggy = {"Craggy", "09:00", "17:00", NULL};
-    struct island isla_nublar = {"Isla Nublar", "09:00", "17:00", NULL};
-    struct island shutter = {"Shutter", "09:00", "17:00", NULL};
+    island *start = NULL;
+    island *i = NULL;
+    island *next = NULL;
+    char name[80];
 
-    amity.next = &craggy;
-    craggy.next = &isla_nublar;
-    isla_nublar.next = &shutter;
+    for(;fgets(name, 80, stdin) != NULL; i=next){
+        next = dynamic_island_creation(name);
+        if(start==NULL){
+            start = next;
+        }
+        if(i != NULL){
+            i->next = next;
+        }
 
-    struct island skull = {"Skull", "9:00", "17:00", NULL};
-    isla_nublar.next = &skull;
-    skull.next = &shutter;
+    }
 
-    display_linked_list(&amity);
-    struct island kosi = {"Kosi's Island","9:00", "17:00", NULL};
-    insert_after("Shutter", &amity, &kosi);
-    display_linked_list(&amity);
-
-    island *p = dynamic_island_creation("Tatooine");
-    printf("The name of the dynamic %s \n", p->name);
-    free(p);
+    display_linked_list(start);
+    release_island_memory(start);
 }
 
 void display_linked_list(island *start){
