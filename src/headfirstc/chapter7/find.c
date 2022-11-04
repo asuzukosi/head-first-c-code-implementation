@@ -29,7 +29,7 @@ int main(int argc, char const *argv[])
     puts("------------------------------------");
     for (int i = 0; i < NUM_ADS; i++)
     {
-        if(strstr(ADS[i], "sports") && !strstr(ADS[i], "bieber")){
+        if(sports_no_bieber(ADS[i])){
             printf("%s \n", ADS[i]);
         }
     }
