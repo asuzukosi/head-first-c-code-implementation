@@ -22,17 +22,46 @@ int sports_no_bieber(char *s){
     return strstr(s, "sports") && !strstr(s, "bieber");
 }
 
-int main(int argc, char const *argv[])
-{
+int sports_or_bieber(char *s){
+    return strstr(s, "sports") || strstr(s, "bieber");
+}
+
+int sports_or_workout(char *s){
+    return strstr(s, "sports") || strstr(s, "workout");
+}
+
+int arts_theater_or_dining(char *s){
+    return strstr(s, "art") || strstr(s, "theater") || strstr(s, "dining");
+}
+
+void find(int(*filter)(char*)){
     /* code */
     puts("Search results : ");
     puts("------------------------------------");
     for (int i = 0; i < NUM_ADS; i++)
     {
-        if(sports_no_bieber(ADS[i])){
+        if(filter(ADS[i])){
             printf("%s \n", ADS[i]);
         }
     }
     puts("------------------------------------");
+}
+
+int main(int argc, char const *argv[])
+{   
+    /*
+    Using function pointers in c
+    */
+    puts("Sports but no bieber");
+    find(sports_no_bieber);
+
+    puts("Sports or bieber");
+    find(sports_or_bieber);
+
+    puts("Sports or workout");
+    find(sports_or_workout);
+
+    puts("Arts Theater or dining");
+    find(arts_theater_or_dining);
     return 0;
 }
