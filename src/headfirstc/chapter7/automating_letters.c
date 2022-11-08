@@ -42,24 +42,15 @@ void marriage(response r)
 int main(int argc, char const *argv[])
 {
     /* code */
+    void (*replies[])(response) = {dump, second_chance, marriage};
+
     response r[] = {
         {"Mike", DUMP}, {"Luis", SECOND_CHANCE},
         {"Matt", SECOND_CHANCE}, {"William", MARRIAGE}
     };
 
     for(int i = 0; i < 4; i++){
-        switch (r[i].type){
-        case DUMP:
-            dump(r[i]);
-            break;
-        
-        case SECOND_CHANCE:
-            second_chance(r[i]);
-            break;
-        
-        default:
-            marriage(r[i]);
-        }
+        replies[r[i].type](r[i]);
     }
     return 0;
 }
