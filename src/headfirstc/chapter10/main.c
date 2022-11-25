@@ -4,6 +4,7 @@ This is used to test out interprocess communication in c
 
 #include<stdio.h>
 #include<stdlib.h>
+#include<sys/wait.h>
 
 int main(int argc, char const *argv[])
 {
